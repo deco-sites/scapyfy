@@ -21,7 +21,7 @@ function Highlights({ highlights = [], title }: Props) {
         <span class="font-medium text-2xl">{title}</span>
       </h2>
 
-      <Slider class="carousel carousel-center sm:carousel-end gap-6 justify-center">
+      <Slider class="carousel carousel-center sm:carousel-end gap-6 justify-center mt-10">
         {highlights.map(({ href, src, alt, label }, index) => (
           <Slider.Item
             index={index}
