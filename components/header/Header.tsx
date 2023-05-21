@@ -8,6 +8,8 @@ import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
 
+export type MenuPosition = "left" | "right";
+
 export interface NavItem {
   label: string;
   href: string;
@@ -23,12 +25,15 @@ export interface NavItem {
     src?: Image;
     alt?: string;
   };
+  hasSeparator: boolean;
 }
 
 export interface Props {
   alerts: string[];
+  canDismissAlerts: boolean;
   /** @title Search Bar */
   searchbar?: SearchbarProps;
+  enableSearch: boolean;
   /**
    * @title Navigation items
    * @description Navigation items used both on mobile and desktop menus
@@ -50,7 +55,9 @@ export interface Props {
 function Header(
   {
     alerts,
+    canDismissAlerts,
     searchbar: _searchbar,
+    enableSearch = true,
     products,
     navItems = [],
     suggestions,
@@ -60,9 +67,13 @@ function Header(
   return (
     <>
       <header style={{ height: headerHeight }}>
-        <div class="bg-base-100 fixed w-full z-50">
-          <Alert alerts={alerts} />
-          <Navbar items={navItems} searchbar={searchbar} />
+        <div class="bg-primary text-primary-content fixed w-full z-50">
+          <Alert alerts={alerts} canDismiss={canDismissAlerts} />
+          <Navbar
+            items={navItems}
+            searchbar={searchbar}
+            enableSearch={enableSearch}
+          />
         </div>
 
         <Modals
