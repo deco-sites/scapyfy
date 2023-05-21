@@ -128,56 +128,29 @@ function Footer({ sections = [] }: Props) {
               ))}
             </ul>
           </FooterContainer>
-        </div>
-      </div>
-
-      <div>
-        <div class="container w-full">
-          <FooterContainer class="flex justify-between w-full">
-            <span class="flex items-center gap-1 text-primary-content">
-              Powered by{" "}
-              <a
-                href="https://www.deco.cx"
-                aria-label="powered by https://www.deco.cx"
-              >
-                <Icon id="Deco" height={20} width={60} strokeWidth={0.01} />
-              </a>
+          <FooterContainer class="flex justify-between w-full text-xs text-gray-400">
+            <span class="flex items-center gap-4 text-primary-content font-medium">
+              <span>
+                <a
+                  href="https://www.deco.cx"
+                  aria-label="powered by https://www.deco.cx"
+                >
+                  Legal
+                </a>
+              </span>
+              <span>
+                <a
+                  href="https://www.deco.cx"
+                  aria-label="powered by https://www.deco.cx"
+                >
+                  Centro de Privacidade
+                </a>
+              </span>
             </span>
 
-            <ul class="flex items-center justify-center gap-2">
-              <li>
-                <a
-                  href="https://www.instagram.com/deco.cx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram logo"
-                >
-                  <Icon
-                    class="text-primary-content"
-                    width={32}
-                    height={32}
-                    id="Instagram"
-                    strokeWidth={1}
-                  />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://www.deco.cx/discord"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Discord logo"
-                >
-                  <Icon
-                    class="text-primary-content"
-                    width={32}
-                    height={32}
-                    id="Discord"
-                    strokeWidth={5}
-                  />
-                </a>
-              </li>
-            </ul>
+            <span>
+              © 2023 Spotify AB
+            </span>
           </FooterContainer>
         </div>
       </div>
