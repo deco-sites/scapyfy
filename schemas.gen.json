@@ -7502,7 +7502,7 @@
       "required": [],
       "title": "OptionalColors"
     },
-    "ZGVjby1zaXRlcy9zY2FweWZ5L3NlY3Rpb25zL0Rlc2lnblN5c3RlbS50c3g=@Colors&b966eeb0bbdb3699ee11b12ce6a39cc4": {
+    "ZGVjby1zaXRlcy9zY2FweWZ5L3NlY3Rpb25zL0Rlc2lnblN5c3RlbS50c3g=@3176a96f2f064731d7bdfb0b425a8107&Colors": {
       "allOf": [
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L3NlY3Rpb25zL0Rlc2lnblN5c3RlbS50c3g=@Colors"
@@ -7518,7 +7518,7 @@
           "required": []
         }
       ],
-      "title": "Colors&b966eeb0bbdb3699ee11b12ce6a39cc4"
+      "title": "3176a96f2f064731d7bdfb0b425a8107&Colors"
     },
     "ZGVjby1zaXRlcy9zY2FweWZ5L3NlY3Rpb25zL0Rlc2lnblN5c3RlbS50c3g=@Miscellaneous": {
       "type": "object",
@@ -7621,7 +7621,7 @@
       "type": "object",
       "properties": {
         "colors": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L3NlY3Rpb25zL0Rlc2lnblN5c3RlbS50c3g=@Colors&b966eeb0bbdb3699ee11b12ce6a39cc4",
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L3NlY3Rpb25zL0Rlc2lnblN5c3RlbS50c3g=@3176a96f2f064731d7bdfb0b425a8107&Colors",
           "title": "Colors"
         },
         "miscellaneous": {
@@ -7809,6 +7809,13 @@
         "features": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvdWkvRmVhdHVyZXMudHN4@Feature[]",
           "title": "Features"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Title"
         }
       },
       "required": [
@@ -7981,38 +7988,61 @@
       ],
       "title": "IconItem"
     },
-    "ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@IconItem|StringItem": {
+    "ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@LogoItem": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "string",
+          "title": "Width"
+        },
+        "color": {
+          "type": "string",
+          "title": "Color"
+        }
+      },
+      "required": [
+        "width",
+        "color"
+      ],
+      "title": "LogoItem"
+    },
+    "ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@IconItem|LogoItem|StringItem": {
       "anyOf": [
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@StringItem"
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@IconItem"
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@LogoItem"
         }
       ],
-      "title": "IconItem|StringItem"
+      "title": "IconItem|LogoItem|StringItem"
     },
-    "ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@IconItem|StringItem[]": {
+    "ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@IconItem|LogoItem|StringItem[]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@IconItem|StringItem"
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@IconItem|LogoItem|StringItem"
       },
-      "title": "IconItem|StringItem[]"
+      "title": "IconItem|LogoItem|StringItem[]"
     },
     "ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@Section": {
       "type": "object",
       "properties": {
         "label": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "title": "Label"
         },
         "children": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@IconItem|StringItem[]",
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvZm9vdGVyL0Zvb3Rlci50c3g=@IconItem|LogoItem|StringItem[]",
           "title": "Children"
         }
       },
       "required": [
-        "label",
         "children"
       ],
       "title": "Section"
@@ -8146,11 +8176,16 @@
           },
           "required": [],
           "title": "Image"
+        },
+        "hasSeparator": {
+          "type": "boolean",
+          "title": "Has Separator"
         }
       },
       "required": [
         "label",
-        "href"
+        "href",
+        "hasSeparator"
       ],
       "title": "NavItem"
     },
@@ -8171,9 +8206,17 @@
           },
           "title": "Alerts"
         },
+        "canDismissAlerts": {
+          "type": "boolean",
+          "title": "Can Dismiss Alerts"
+        },
         "searchbar": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvc2VhcmNoL1NlYXJjaGJhci50c3g=@EditableProps",
           "title": "Search Bar"
+        },
+        "enableSearch": {
+          "type": "boolean",
+          "title": "Enable Search"
         },
         "navItems": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zY2FweWZ5L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItem[]",
@@ -8191,7 +8234,9 @@
         }
       },
       "required": [
-        "alerts"
+        "alerts",
+        "canDismissAlerts",
+        "enableSearch"
       ],
       "title": "deco-sites/scapyfy/components/header/Header.tsx@Props"
     },
