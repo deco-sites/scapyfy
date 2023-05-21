@@ -6,9 +6,10 @@ import { navbarHeight } from "./constants.ts";
 import type { INavItem } from "./NavItem.tsx";
 import type { Props as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 
-function Navbar({ items, searchbar }: {
+function Navbar({ items, searchbar, enableSearch }: {
   items: INavItem[];
   searchbar: SearchbarProps;
+  enableSearch: boolean;
 }) {
   return (
     <>
@@ -17,8 +18,6 @@ function Navbar({ items, searchbar }: {
         style={{ height: navbarHeight }}
         class="md:hidden flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 gap-2"
       >
-        <Buttons variant="menu" />
-
         <a
           href="/"
           class="flex-grow inline-flex items-center"
@@ -29,9 +28,10 @@ function Navbar({ items, searchbar }: {
         </a>
 
         <div class="flex gap-1">
-          <Buttons variant="search" />
-          <Buttons variant="cart" />
+          {enableSearch && <Buttons variant="search" />}
+          {/* <Buttons variant="cart" /> */}
         </div>
+        <Buttons variant="menu" />
       </div>
 
       {/* Desktop Version */}
@@ -45,9 +45,10 @@ function Navbar({ items, searchbar }: {
           {items.map((item) => <NavItem item={item} />)}
         </div>
         <div class="flex-none w-44 flex items-center justify-end gap-2">
-          <Buttons variant="search" />
-          <Searchbar searchbar={searchbar} />
-          <a
+          {enableSearch && <Buttons variant="search" />}
+          {enableSearch && <Searchbar searchbar={searchbar} />}
+          {
+            /* <a
             class="btn btn-square btn-ghost"
             href="/login"
             aria-label="Log in"
@@ -66,7 +67,8 @@ function Navbar({ items, searchbar }: {
               fill="none"
             />
           </a>
-          <Buttons variant="cart" />
+          <Buttons variant="cart" /> */
+          }
         </div>
       </div>
     </>
