@@ -1,7 +1,5 @@
-import Icon, {
-  AvailableIcons,
-} from "$store/components/ui/Icon.tsx";
-import Newsletter from "$store/islands/Newsletter.tsx";
+import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
+import Logo from "$store/components/Logo.tsx";
 import type { ComponentChildren } from "preact";
 
 export type IconItem = { icon: AvailableIcons };
@@ -9,11 +7,15 @@ export type StringItem = {
   label: string;
   href: string;
 };
+export type LogoItem = {
+  width: string;
+  color: string;
+};
 
-export type Item = StringItem | IconItem;
+export type Item = StringItem | IconItem | LogoItem;
 
 export type Section = {
-  label: string;
+  label?: string;
   children: Item[];
 };
 
@@ -21,20 +23,27 @@ const isIcon = (item: Item): item is IconItem =>
   // deno-lint-ignore no-explicit-any
   typeof (item as any)?.icon === "string";
 
+const isLogo = (item: Item): item is LogoItem =>
+  // deno-lint-ignore no-explicit-any
+  typeof (item as any)?.width === "string";
+
 function SectionItem({ item }: { item: Item }) {
   return (
-    <span class="text-primary-content">
+    <span class="text-white">
       {isIcon(item)
         ? (
-          <div class="border-base-100 border border-solid py-1.5 px-2.5">
+          <div class="border border-transparent bg-gray-500 rounded-full p-2">
             <Icon
               id={item.icon}
-              width={25}
-              height={20}
-              strokeWidth={0.01}
+              width={30}
+              height={30}
+              strokeWidth={2}
+              fill={"white"}
             />
           </div>
         )
+        : isLogo(item)
+        ? <Logo width={item.width} color={item.color} />
         : (
           <a href={item.href}>
             {item.label}
@@ -59,22 +68,22 @@ export interface Props {
 
 function Footer({ sections = [] }: Props) {
   return (
-    <footer class="w-full bg-primary flex flex-col divide-y divide-primary-content">
+    <footer class="w-full bg-black flex flex-col divide-y divide-primary-content">
       <div>
-        <div class="container w-full flex flex-col divide-y divide-primary-content">
-          <FooterContainer>
-            <Newsletter />
-          </FooterContainer>
-
+        <div class="container w-full flex flex-col items-center divide-y divide-primary-content">
           <FooterContainer>
             {/* Desktop view */}
             <ul class="hidden sm:flex flex-row gap-20">
               {sections.map((section) => (
                 <li>
                   <div>
-                    <span class="font-medium text-xl text-primary-content">
-                      {section.label}
-                    </span>
+                    {section.label
+                      ? (
+                        <span class="font-black space text-xs text-gray-400 tracking-wider uppercase">
+                          {section.label}
+                        </span>
+                      )
+                      : <></>}
 
                     <ul
                       class={`flex ${
